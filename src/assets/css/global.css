@@ -37,7 +37,6 @@ main {
 
 .tile {
   height: 8.75rem;
-  width: 8.75rem;
   border-radius: 15px;
   background-color: var(--light-gray);
   box-shadow: inset 0px -8px 0px #10212a;

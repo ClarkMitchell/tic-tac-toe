@@ -1,6 +1,6 @@
 import { createContext, useReducer, Reducer, Dispatch, ReactNode } from "react";
 
-export default function createCtx<StateType, ActionType>(
+export default function createReducerContext<StateType, ActionType>(
   reducer: Reducer<StateType, ActionType>,
   initialState: StateType
 ) {

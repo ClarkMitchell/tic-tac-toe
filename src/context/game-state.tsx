@@ -1,4 +1,4 @@
-import createCtx from "./create-ctx";
+import createReducerContext from "./create-reducer-context";
 
 type Player = "X" | "O";
 
@@ -35,7 +35,7 @@ function reducer(state: GameState, action: Action): GameState {
   }
 }
 
-export const [GameStateContext, GameStateProvider] = createCtx(
+export const [GameStateContext, GameStateProvider] = createReducerContext(
   reducer,
   defaultGameState
 );

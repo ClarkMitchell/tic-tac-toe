@@ -7,15 +7,9 @@ interface Props {
 export function Board({ children }: Props) {
   return (
     <section className="grid">
-      <Tile />
-      <Tile player="o" />
-      <Tile player="x" />
-      <Tile player="o" />
-      <Tile player="x" />
-      <Tile player="o" />
-      <Tile player="x" />
-      <Tile player="o" />
-      <Tile player="o" />
+      {new Array(3).map((_, row) =>
+        new Array(3).map((_, column) => <Tile row={row} column={column} />)
+      )}
     </section>
   );
 }

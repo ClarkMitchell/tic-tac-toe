@@ -4,16 +4,16 @@ import { useContext } from "react";
 import { GameStateContext } from "../../context/game-state";
 
 interface Props {
-  player?: string;
+  row: number;
+  column: number;
 }
 
-export function Tile({ player }: Props) {
+export function Tile({ row, column }: Props) {
   const { state, dispatch } = useContext(GameStateContext);
 
   return (
     <button className="tile" onClick={() => dispatch({ type: "move" })}>
-      <span>{state.player}</span>
-      {player && <img src={player === "x" ? x : o} alt="x" />}
+      {/* {player && <img src={player === "x" ? x : o} alt="x" />} */}
     </button>
   );
 }
