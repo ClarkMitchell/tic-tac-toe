@@ -1,14 +1,14 @@
 import Tile from "../Tile";
 
-interface Props {
-  children: React.ReactNode;
-}
+const three = new Array(3).fill(null);
 
-export function Board({ children }: Props) {
+export default function Board() {
   return (
     <section className="grid">
-      {new Array(3).map((_, row) =>
-        new Array(3).map((_, column) => <Tile row={row} column={column} />)
+      {three.map((_, row) =>
+        three.map((_, column) => (
+          <Tile row={row} column={column} key={`${row}-${column}`} />
+        ))
       )}
     </section>
   );

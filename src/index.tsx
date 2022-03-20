@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "react-responsive-modal/styles.css";
 import "./assets/css/reset.css";
 import "./assets/css/global.css";
 import App from "./App";
