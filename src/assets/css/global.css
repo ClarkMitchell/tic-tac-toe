@@ -1,0 +1,45 @@
+:root {
+  --dark-green: #31c3bd;
+  --light-green: #65e9e4;
+  --dark-yellow: #f2b137;
+  --light-yellow: #ffc860;
+  --dark-gray: #1a2a33;
+  --light-gray: #1f3641;
+  --dark-white: #a8bfc9;
+  --light-white: #dbe8ed;
+  --container: min(100% - 2rem, 26.25rem);
+}
+
+body {
+  background-color: var(--dark-gray);
+  color: var(--light-white);
+  text-transform: uppercase;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+}
+
+main {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tile {
+  height: 8.75rem;
+  width: 8.75rem;
+  border-radius: 15px;
+  background-color: var(--light-gray);
+  box-shadow: inset 0px -8px 0px #10212a;
+  border: 0;
+}
