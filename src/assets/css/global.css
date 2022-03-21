@@ -181,7 +181,7 @@ button:not(.tile):active {
   }
 }
 
-@keyframes spin {
+@keyframes spin-left {
   0% {
     transform: rotate(0deg);
   }
@@ -190,6 +190,18 @@ button:not(.tile):active {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }
 
@@ -215,8 +227,12 @@ button:not(.tile):active {
   animation: drop-in 0.5s ease-in-out forwards;
 }
 
-[data-animation="spin"] {
-  animation: spin 3 0.03s linear;
+[data-animation="spin-left"] {
+  animation: spin-left 3 0.03s ease-in-out forwards;
+}
+
+[data-animation="spin-right"] {
+  animation: spin-right 3 0.03s ease-in-out forwards;
 }
 
 [data-animation-delay="0.25s"] {

@@ -2,7 +2,10 @@ import { useMemo } from "react";
 import { getRandomAnimation } from "../../utils";
 
 export default function O() {
-  const animation = useMemo(getRandomAnimation, []);
+  const animation = useMemo(
+    () => getRandomAnimation(["pop-up", "drop-in", "fade-up"]),
+    []
+  );
 
   return (
     <svg
