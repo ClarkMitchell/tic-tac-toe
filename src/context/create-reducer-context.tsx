@@ -1,4 +1,11 @@
-import { createContext, useReducer, Reducer, Dispatch, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  Reducer,
+  Dispatch,
+  ReactNode,
+} from "react";
 
 export default function createReducerContext<StateType, ActionType>(
   reducer: Reducer<StateType, ActionType>,
@@ -23,5 +30,15 @@ export default function createReducerContext<StateType, ActionType>(
     );
   }
 
-  return [Context, Provider] as const;
+  function useReducerContext() {
+    const ctx = useContext(Context);
+
+    if (ctx === undefined) {
+      throw new Error("useReducerContext hook must be used within a Provider");
+    }
+
+    return ctx;
+  }
+
+  return [useReducerContext, Provider] as const;
 }

@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect } from "react";
-import { GameStateContext } from "../../context/game-state";
+import { useState, useEffect } from "react";
+import { useGameState } from "../../context/game-state";
 import X from "../X";
 import O from "../O";
 
@@ -8,7 +8,7 @@ import { Banner, BannerHeadline } from "../Banner";
 
 export default function Game() {
   const [isBannerDisplayed, setIsBannerDisplayed] = useState(false);
-  const { state, dispatch } = useContext(GameStateContext);
+  const { state } = useGameState();
 
   useEffect(() => {
     if (state.winner || state.tied) {

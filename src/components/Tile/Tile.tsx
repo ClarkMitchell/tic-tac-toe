@@ -1,7 +1,7 @@
 import X from "../X";
 import O from "../O";
-import { useContext, useMemo } from "react";
-import { GameStateContext } from "../../context/game-state";
+import { useMemo } from "react";
+import { useGameState } from "../../context/game-state";
 
 interface Props {
   row: number;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Tile({ row, column }: Props) {
-  const { state, dispatch } = useContext(GameStateContext);
+  const { state, dispatch } = useGameState();
 
   const isWinRow = useMemo(
     () => state.winRow[row][column],

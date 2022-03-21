@@ -1,6 +1,6 @@
 import { ReactNode, useContext } from "react";
 import { Modal } from "react-responsive-modal";
-import { GameStateContext } from "../../context/game-state";
+import { useGameState } from "../../context/game-state";
 
 interface Props {
   open: boolean;
@@ -19,7 +19,7 @@ export default function Banner({
   next = "Next Round",
   children,
 }: Props) {
-  const { state, dispatch } = useContext(GameStateContext);
+  const { state, dispatch } = useGameState();
 
   function reset() {
     dispatch({ type: "RESET" });

@@ -1,5 +1,6 @@
 import createReducerContext from "./create-reducer-context";
 import { Player, Winner } from "../types";
+import { useContext } from "react";
 
 const defaultBoardState = [
   [" ", " ", " "],
@@ -23,9 +24,7 @@ const defaultGameState: GameState = {
   tied: false,
 };
 
-export type Action =
-  | { type: "MOVE"; row: number; column: number }
-  | { type: "RESET" };
+type Action = { type: "MOVE"; row: number; column: number } | { type: "RESET" };
 function reducer(state: GameState, action: Action): GameState {
   switch (action.type) {
     case "MOVE":
@@ -124,7 +123,7 @@ function checkForWin(
   return { winner: null, winRow };
 }
 
-export const [GameStateContext, GameStateProvider] = createReducerContext(
+export const [useGameState, GameStateProvider] = createReducerContext(
   reducer,
   defaultGameState
 );
