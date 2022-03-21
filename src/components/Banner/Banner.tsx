@@ -1,22 +1,31 @@
+import { ReactNode, useContext } from "react";
 import { Modal } from "react-responsive-modal";
+import { GameStateContext } from "../../context/game-state";
 
 interface Props {
   open: boolean;
   onClose: () => void;
   eyebrow: string;
-  headline: string;
   cancel?: string;
   next?: string;
+  children: ReactNode;
 }
 
 export default function Banner({
   open,
   onClose,
   eyebrow,
-  headline,
   cancel = "Quit",
   next = "Next Round",
+  children,
 }: Props) {
+  const { state, dispatch } = useContext(GameStateContext);
+
+  function reset() {
+    dispatch({ type: "RESET" });
+    onClose();
+  }
+
   return (
     <Modal
       open={open}
@@ -29,10 +38,14 @@ export default function Banner({
       closeIcon={<svg id="close"></svg>}
     >
       {eyebrow && <p id="eyebrow">{eyebrow}</p>}
-      <h1 id="headline">{headline}</h1>
+      {children}
       <div className="buttons">
-        <button className="gray">{cancel}</button>
-        <button className="yellow inverted">{next}</button>
+        <button className="gray" onClick={reset}>
+          {cancel}
+        </button>
+        <button className="yellow inverted" onClick={reset}>
+          {next}
+        </button>
       </div>
     </Modal>
   );

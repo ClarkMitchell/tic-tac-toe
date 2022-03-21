@@ -45,7 +45,7 @@ export default function Tile({ row, column }: Props) {
 
   function handleMove() {
     if (currentTile || state.winner) return;
-    dispatch({ row, column });
+    dispatch({ type: "MOVE", row, column });
   }
 
   return (

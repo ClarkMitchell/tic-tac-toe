@@ -1,6 +1,5 @@
 import createReducerContext from "./create-reducer-context";
-
-type Player = "X" | "O";
+import { Player, Winner } from "../types";
 
 const defaultBoardState = [
   [" ", " ", " "],
@@ -11,8 +10,9 @@ const defaultBoardState = [
 interface GameState {
   player: Player;
   board: typeof defaultBoardState;
-  winner: Player | null;
+  winner: Winner;
   winRow: typeof defaultBoardState;
+  tied: boolean;
 }
 
 const defaultGameState: GameState = {
@@ -20,32 +20,40 @@ const defaultGameState: GameState = {
   board: defaultBoardState,
   winner: null,
   winRow: defaultBoardState,
+  tied: false,
 };
 
-export type Action = { row: number; column: number };
+export type Action =
+  | { type: "MOVE"; row: number; column: number }
+  | { type: "RESET" };
 function reducer(state: GameState, action: Action): GameState {
-  const board = [...state.board];
+  switch (action.type) {
+    case "MOVE":
+      const board = JSON.parse(JSON.stringify(state.board));
+      board[action.row][action.column] = state.player;
 
-  board[action.row][action.column] = state.player;
-  const { winner, winRow } = checkForWin(board, state.player, action);
+      const { winner, winRow } = checkForWin(board, state.player, action);
 
-  if (winner) {
-    console.log({ winner, winRow });
+      return {
+        player: state.player === "X" ? "O" : "X",
+        board,
+        winner,
+        winRow,
+        tied: board.flat().every((space: string) => space.trim() !== ""),
+      };
+    case "RESET":
+      console.log({ defaultGameState });
+      return defaultGameState;
+    default:
+      return defaultGameState;
   }
-
-  return {
-    player: state.player === "X" ? "O" : "X",
-    board,
-    winner,
-    winRow,
-  };
 }
 
-type winState = { winner: Player | null; winRow: typeof defaultBoardState };
+type winState = { winner: Winner; winRow: typeof defaultBoardState };
 function checkForWin(
   board: GameState["board"],
   player: Player,
-  action: Action
+  action: Extract<Action, { type: "MOVE" }>
 ): winState {
   let row = 0,
     column = 0,
