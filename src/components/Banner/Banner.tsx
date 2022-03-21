@@ -19,7 +19,7 @@ export default function Banner({
   next = "Next Round",
   children,
 }: Props) {
-  const { state, dispatch } = useGameState();
+  const { dispatch } = useGameState();
 
   function reset() {
     dispatch({ type: "RESET" });
