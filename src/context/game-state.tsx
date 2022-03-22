@@ -1,6 +1,5 @@
 import createReducerContext from "./create-reducer-context";
 import { Player, Winner } from "../types";
-import { useContext } from "react";
 
 const defaultBoardState = [
   [" ", " ", " "],
