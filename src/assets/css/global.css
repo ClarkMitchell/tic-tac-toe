@@ -10,6 +10,7 @@
   --darkest-white: #6b8997;
   --white: #dbe8ed;
   --container: min(100% - 2rem, 29rem);
+  --gap: min(4vw, 1.25rem);
 }
 
 body {
@@ -52,6 +53,10 @@ button:not(.tile):active {
 .gray {
   background-color: var(--dark-white);
   --shadow-color: var(--darkest-white);
+}
+
+svg {
+  overflow: visible;
 }
 
 /** Animation */

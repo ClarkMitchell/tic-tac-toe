@@ -1,6 +1,6 @@
 .tile {
-  height: 8.75rem;
-  width: 8.75rem;
+  max-width: 8.75rem;
+  aspect-ratio: 1 / 1;
   background-color: var(--light-black);
 }
 

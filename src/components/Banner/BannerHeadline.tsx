@@ -3,7 +3,7 @@ import X from "../X";
 import O from "../O";
 
 interface Props {
-  winner: Winner;
+  winner?: Winner;
 }
 
 export default function BannerHeadline({ winner }: Props) {

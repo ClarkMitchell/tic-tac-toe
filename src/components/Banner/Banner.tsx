@@ -7,7 +7,7 @@ import "./styles.css";
 interface Props {
   open: boolean;
   onClose: () => void;
-  eyebrow: string;
+  eyebrow?: string;
   cancel?: string;
   next?: string;
   children: ReactNode;
