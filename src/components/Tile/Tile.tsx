@@ -2,6 +2,7 @@ import X from "../X";
 import O from "../O";
 import { useMemo } from "react";
 import { useGameState } from "../../context/game-state";
+import "./styles.css";
 
 interface Props {
   row: number;

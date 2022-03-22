@@ -5,13 +5,16 @@ import "./assets/css/reset.css";
 import "./assets/css/global.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { GameHistoryProvider } from "./context/game-history";
 import { GameStateProvider } from "./context/game-state";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GameStateProvider>
-      <App />
-    </GameStateProvider>
+    <GameHistoryProvider>
+      <GameStateProvider>
+        <App />
+      </GameStateProvider>
+    </GameHistoryProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

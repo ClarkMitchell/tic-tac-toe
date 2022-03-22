@@ -1,0 +1,36 @@
+.banner {
+  max-width: 100vw;
+  width: 100vw;
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+  padding-block: 2.8125rem;
+  background-color: var(--light-black);
+}
+
+.banner .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.banner .buttons button {
+  padding: 1rem 1.2rem;
+}
+
+#close {
+  display: none;
+}
+
+#eyebrow {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}

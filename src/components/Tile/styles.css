@@ -1,0 +1,27 @@
+.tile {
+  height: 8.75rem;
+  width: 8.75rem;
+  background-color: var(--light-black);
+}
+
+.green {
+  color: var(--dark-green);
+}
+
+.yellow {
+  color: var(--dark-yellow);
+}
+
+.inverted {
+  color: var(--light-black);
+}
+
+.green.inverted {
+  background-color: var(--light-green);
+  --shadow-color: var(--dark-green);
+}
+
+.yellow.inverted {
+  background-color: var(--dark-yellow);
+  --shadow-color: var(--darkest-yellow);
+}

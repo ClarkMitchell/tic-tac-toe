@@ -1,6 +1,8 @@
-import { ReactNode, useContext } from "react";
+import { ReactNode } from "react";
 import { Modal } from "react-responsive-modal";
+import { useGameHistory, defaultGameHistory } from "../../context/game-history";
 import { useGameState } from "../../context/game-state";
+import "./styles.css";
 
 interface Props {
   open: boolean;
@@ -19,7 +21,13 @@ export default function Banner({
   next = "Next Round",
   children,
 }: Props) {
+  const { update } = useGameHistory();
   const { dispatch } = useGameState();
+
+  function quit() {
+    update(defaultGameHistory);
+    reset();
+  }
 
   function reset() {
     dispatch({ type: "RESET" });
@@ -29,7 +37,7 @@ export default function Banner({
   return (
     <Modal
       open={open}
-      onClose={onClose}
+      onClose={reset}
       center
       aria-labelledby="headline"
       aria-describedby="eyebrow"
@@ -40,7 +48,7 @@ export default function Banner({
       {eyebrow && <p id="eyebrow">{eyebrow}</p>}
       {children}
       <div className="buttons">
-        <button className="gray" onClick={reset}>
+        <button className="gray" onClick={quit}>
           {cancel}
         </button>
         <button className="yellow inverted" onClick={reset}>

@@ -1,0 +1,48 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+.stat-tile {
+  --shadow-color: #10212a;
+  color: var(--dark-black);
+  background-color: var(--light-black);
+  text-transform: uppercase;
+  border-radius: 1rem;
+  border: 0 solid var(--shadow-color);
+  border-bottom-width: 0.5rem;
+  transition: 0.1s;
+  padding: 1.1rem 2.2rem 0.7rem 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.number {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.stat-tile div {
+  font-weight: 400;
+}
+
+.ties {
+  background-color: var(--dark-white);
+  --shadow-color: var(--darkest-white);
+}
+
+.x-wins {
+  background-color: var(--light-green);
+  --shadow-color: var(--dark-green);
+}
+
+.o-wins {
+  background-color: var(--dark-yellow);
+  --shadow-color: var(--darkest-yellow);
+}

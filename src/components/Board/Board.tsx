@@ -1,4 +1,5 @@
 import Tile from "../Tile";
+import "./styles.css";
 
 const three = new Array(3).fill(null);
 
