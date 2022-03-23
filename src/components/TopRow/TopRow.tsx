@@ -2,6 +2,7 @@ import iconX from "../../assets/img/icon-x.svg";
 import iconO from "../../assets/img/icon-o.svg";
 import iconRestart from "../../assets/img/icon-restart.svg";
 import { useGameState } from "../../context/game-state";
+import { LiveAnnouncer, LiveMessage } from "react-aria-live";
 import "./styles.css";
 
 export default function TopRow() {
@@ -38,7 +39,7 @@ function Turn() {
   const { state } = useGameState();
 
   return (
-    <div className="turn-tile">
+    <div role="region" className="turn-tile">
       <img
         src={state.player === "X" ? iconX : iconO}
         height="20"
@@ -46,6 +47,12 @@ function Turn() {
         alt=""
       />
       Turn
+      <LiveAnnouncer>
+        <LiveMessage
+          message={`Player ${state.player} turn`}
+          aria-live="polite"
+        />
+      </LiveAnnouncer>
     </div>
   );
 }

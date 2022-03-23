@@ -61,6 +61,14 @@ svg {
   overflow: visible;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
 /** Animation */
 
 @keyframes fade-in {
@@ -140,15 +148,6 @@ svg {
   }
 }
 
-@keyframes instant {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 [data-animation="blink"] {
   animation: blink 0.25s ease-in-out 2;
 }
@@ -177,4 +176,15 @@ svg {
 
 [data-animation="spin-right"] {
   animation: spin-right 3 0.03s ease-in-out forwards;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+  position: absolute;
 }

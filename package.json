@@ -11,6 +11,7 @@
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
     "react": "^17",
+    "react-aria-live": "^2.0.5",
     "react-dom": "^17",
     "react-responsive-modal": "^6.2.0",
     "react-scripts": "5.0.0",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-aria-live": "^2.0.2"
   }
 }
