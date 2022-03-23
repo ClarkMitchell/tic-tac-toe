@@ -1,58 +1,75 @@
 import { ReactNode } from "react";
 import { Modal } from "react-responsive-modal";
-import { useGameHistory, defaultGameHistory } from "../../context/game-history";
 import { useGameState } from "../../context/game-state";
+import { useGameHistory, defaultGameHistory } from "../../context/game-history";
+import X from "../X";
+import O from "../O";
 import "./styles.css";
 
-interface Props {
-  open: boolean;
-  onClose: () => void;
-  eyebrow?: string;
-  cancel?: string;
-  next?: string;
-  children: ReactNode;
+export default function Banner() {
+  const { state } = useGameState();
+
+  return (
+    <>
+      <ModalWrapper open={state.winner === "X"}>
+        <p id="eyebrow">Player 1 Wins!</p>
+        <h1 className="green">
+          <X noAnimation /> Takes the Round
+        </h1>
+      </ModalWrapper>
+      <ModalWrapper open={state.winner === "O"}>
+        <p id="eyebrow">Player 2 Wins!</p>
+        <h1 className="yellow">
+          <O noAnimation /> Takes the Round
+        </h1>
+      </ModalWrapper>
+      <ModalWrapper open={state.tied === true}>
+        <h1>Round state.tied</h1>
+      </ModalWrapper>
+    </>
+  );
 }
 
-export default function Banner({
+function ModalWrapper({
   open,
-  onClose,
-  eyebrow,
-  cancel = "Quit",
-  next = "Next Round",
   children,
-}: Props) {
-  const { update } = useGameHistory();
+}: {
+  open: boolean;
+  children: ReactNode;
+}) {
   const { dispatch } = useGameState();
+  const { update } = useGameHistory();
+
+  function handleClose() {
+    dispatch({ type: "RESET" });
+  }
 
   function quit() {
     update(defaultGameHistory);
-    reset();
-  }
-
-  function reset() {
-    dispatch({ type: "RESET" });
-    onClose();
+    handleClose();
   }
 
   return (
     <Modal
       open={open}
-      onClose={reset}
+      onClose={handleClose}
       center
       aria-labelledby="headline"
       aria-describedby="eyebrow"
-      classNames={{ modal: "banner", modalAnimationIn: "fade-up" }}
+      classNames={{
+        modal: "banner",
+        modalAnimationIn: "fade-up",
+      }}
       animationDuration={900}
-      closeIcon={<svg id="close"></svg>}
+      closeIcon={false}
     >
-      {eyebrow && <p id="eyebrow">{eyebrow}</p>}
       {children}
       <div className="buttons">
         <button className="gray" onClick={quit}>
-          {cancel}
+          Quit
         </button>
-        <button className="yellow inverted" onClick={reset}>
-          {next}
+        <button className="yellow inverted" onClick={handleClose}>
+          Next Round
         </button>
       </div>
     </Modal>

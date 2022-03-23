@@ -10,7 +10,9 @@
   --darkest-white: #6b8997;
   --white: #dbe8ed;
   --container: min(100% - 2rem, 29rem);
-  --gap: min(4vw, 1.25rem);
+  --column-gap: min(3vw, 1.25rem);
+  /** Faux elevation makes horizontal gap perceptually larger. */
+  --row-gap: calc(var(--column-gap) - 0.3rem);
 }
 
 body {
@@ -36,7 +38,7 @@ button {
   text-transform: uppercase;
   border-radius: 1rem;
   border: 0 solid var(--shadow-color);
-  border-bottom-width: 0.5rem;
+  border-bottom-width: 0.4rem;
   transition: 0.1s;
   outline: none;
 }
@@ -135,6 +137,15 @@ svg {
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+@keyframes instant {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

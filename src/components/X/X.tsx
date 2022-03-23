@@ -1,12 +1,16 @@
 import { useMemo } from "react";
 import { getRandomAnimation } from "../../utils";
 
-export default function X() {
+interface Props {
+  noAnimation?: boolean;
+}
+
+export default function X({ noAnimation = false }: Props) {
   const animation = useMemo(getRandomAnimation, []);
 
   return (
     <svg
-      data-animation={animation}
+      data-animation={!noAnimation && animation}
       width="64"
       height="64"
       xmlns="http://www.w3.org/2000/svg"

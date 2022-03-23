@@ -37,10 +37,9 @@ function reducer(state: GameState, action: Action): GameState {
         board,
         winner,
         winRow,
-        tied: board.flat().every((space: string) => space.trim() !== ""),
+        tied: !winner && boardIsFull(board),
       };
     case "RESET":
-      console.log({ defaultGameState });
       return defaultGameState;
     default:
       return defaultGameState;
@@ -120,6 +119,10 @@ function checkForWin(
   }
 
   return { winner: null, winRow };
+}
+
+function boardIsFull(board: GameState["board"]): GameState["tied"] {
+  return board.flat().every((space: string) => space.trim() !== "");
 }
 
 export const [useGameState, GameStateProvider] = createReducerContext(

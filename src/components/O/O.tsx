@@ -1,7 +1,11 @@
 import { useMemo } from "react";
 import { getRandomAnimation } from "../../utils";
 
-export default function O({ height = 64, width = 64 }) {
+interface Props {
+  noAnimation?: boolean;
+}
+
+export default function O({ noAnimation = false }: Props) {
   const animation = useMemo(
     () => getRandomAnimation(["pop-up", "drop-in", "fade-up"]),
     []
@@ -9,9 +13,9 @@ export default function O({ height = 64, width = 64 }) {
 
   return (
     <svg
-      data-animation={animation}
-      width={width}
-      height={height}
+      data-animation={!noAnimation && animation}
+      width="64"
+      height="64"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

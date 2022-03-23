@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 1.2rem;
+  column-gap: var(--column-gap);
+  margin-bottom: var(--row-gap);
   width: 100%;
 }
 
@@ -14,11 +14,16 @@
   text-transform: uppercase;
   border-radius: 1rem;
   border: 0 solid var(--shadow-color);
-  border-bottom-width: 0.5rem;
+  border-bottom-width: 0.4rem;
   transition: 0.1s;
   padding: 1.1rem 2.2rem 0.7rem 1.8rem;
   display: flex;
   gap: 1rem;
+}
+
+.restart {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .restart button {
@@ -26,11 +31,6 @@
   background-color: var(--dark-white);
   border-radius: 1rem;
   padding: 1rem 1.1rem 0.5rem 1.1rem;
-}
-
-.restart {
-  display: flex;
-  justify-content: flex-end;
 }
 
 .icons {
