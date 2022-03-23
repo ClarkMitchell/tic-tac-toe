@@ -24,7 +24,7 @@ export default function Banner() {
         </h1>
       </ModalWrapper>
       <ModalWrapper open={state.tied === true}>
-        <h1>Round state.tied</h1>
+        <h1>Round Tied</h1>
       </ModalWrapper>
     </>
   );
