@@ -1,4 +1,4 @@
-import createStateContext from "./create-state-context";
+import createLocalStorageContext from "./create-local-storage-context";
 
 export const defaultGameHistory = {
   X: 0,
@@ -7,4 +7,4 @@ export const defaultGameHistory = {
 };
 
 export const [useGameHistory, GameHistoryProvider] =
-  createStateContext(defaultGameHistory);
+  createLocalStorageContext(defaultGameHistory);
