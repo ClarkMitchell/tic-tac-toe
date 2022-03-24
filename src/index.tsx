@@ -7,12 +7,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { GameHistoryProvider } from "./context/game-history";
 import { GameStateProvider } from "./context/game-state";
+import { AriaLiveProvider } from "./context/aria-live";
 
 ReactDOM.render(
   <React.StrictMode>
     <GameHistoryProvider>
       <GameStateProvider>
-        <App />
+        <AriaLiveProvider>
+          <App />
+        </AriaLiveProvider>
       </GameStateProvider>
     </GameHistoryProvider>
   </React.StrictMode>,
