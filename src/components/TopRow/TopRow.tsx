@@ -2,7 +2,8 @@ import iconX from "../../assets/img/icon-x.svg";
 import iconO from "../../assets/img/icon-o.svg";
 import iconRestart from "../../assets/img/icon-restart.svg";
 import { useGameState } from "../../context/game-state";
-import { LiveAnnouncer, LiveMessage } from "react-aria-live";
+import { useAriaLive } from "../../context/aria-live";
+import { useEffect } from "react";
 import "./styles.css";
 
 export default function TopRow() {
@@ -37,6 +38,11 @@ function Icons() {
 
 function Turn() {
   const { state } = useGameState();
+  const { setMessage } = useAriaLive();
+
+  useEffect(() => {
+    setMessage(`Player ${state.player}, it is your turn.`);
+  }, [state.player, setMessage]);
 
   return (
     <div role="region" className="turn-tile">
@@ -47,12 +53,6 @@ function Turn() {
         alt=""
       />
       Turn
-      <LiveAnnouncer>
-        <LiveMessage
-          message={`Player ${state.player} turn`}
-          aria-live="polite"
-        />
-      </LiveAnnouncer>
     </div>
   );
 }

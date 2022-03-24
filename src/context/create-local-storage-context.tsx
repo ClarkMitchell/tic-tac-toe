@@ -33,15 +33,15 @@ export default function createLocalStorageContext<StateType>(
     );
   }
 
-  function useStateContext() {
+  function useLocalStorageContext() {
     const ctx = useContext(Context);
 
     if (ctx === undefined) {
-      throw new Error("useReducerContext hook must be used within a Provider");
+      throw new Error("useLocalStorage hook must be used within a Provider");
     }
 
     return ctx;
   }
 
-  return [useStateContext, Provider] as const;
+  return [useLocalStorageContext, Provider] as const;
 }

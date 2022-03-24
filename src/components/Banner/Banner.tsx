@@ -12,7 +12,7 @@ export default function Banner() {
   return (
     <>
       <ModalWrapper open={state.winner === "X"}>
-        <p id="eyebrow">Player 1 Wins!</p>
+        <p id="eyebrow">Player X Wins!</p>
         <h1 id="headline" className="green">
           <X noAnimation />
           <span className="visually-hidden">X </span>
@@ -20,7 +20,7 @@ export default function Banner() {
         </h1>
       </ModalWrapper>
       <ModalWrapper open={state.winner === "O"}>
-        <p id="eyebrow">Player 2 Wins!</p>
+        <p id="eyebrow">Player O Wins!</p>
         <h1 id="headline" className="yellow">
           <O noAnimation />
           <span className="visually-hidden">O </span>
