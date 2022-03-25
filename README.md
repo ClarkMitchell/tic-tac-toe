@@ -1,5 +1,7 @@
 # Tic Tac Toe
 
+![App Screenshot with Tic Tac Toe board](public/img/tic-tac-toe.png)
+
 ## Features
 
 - Player vs Player
